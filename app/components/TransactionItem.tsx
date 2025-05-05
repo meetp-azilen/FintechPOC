@@ -24,7 +24,7 @@ const TransactionItem: React.FC<TransactionItemProps> = ({ transaction }) => {
     <View
       style={[
         styles.container,
-        { borderLeftColor: isExpense ? colors.expense : colors.income }, // Dynamic border color
+        { borderLeftColor: isExpense ? colors.expense : colors.income },
       ]}
     >
       <View style={styles.leftContent}>
@@ -45,9 +45,9 @@ const TransactionItem: React.FC<TransactionItemProps> = ({ transaction }) => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.background,
-    borderRadius: borderRadius.md,
-    padding: spacing.md,
-    marginBottom: spacing.md,
+    borderRadius: borderRadius.medium,
+    padding: spacing.medium,
+    marginBottom: spacing.medium,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
@@ -61,22 +61,22 @@ const styles = StyleSheet.create({
     alignItems: "flex-end",
   },
   category: {
-    fontSize: fontSizes.md,
+    fontSize: fontSizes.medium,
     fontWeight: "600",
     color: colors.text,
-    marginBottom: spacing.xs,
+    marginBottom: spacing.x_small,
   },
   description: {
-    fontSize: fontSizes.sm,
+    fontSize: fontSizes.small,
     color: colors.textLight,
-    marginBottom: spacing.xs,
+    marginBottom: spacing.x_small,
   },
   date: {
-    fontSize: fontSizes.xs,
+    fontSize: fontSizes.x_small,
     color: colors.textLight,
   },
   amount: {
-    fontSize: fontSizes.lg,
+    fontSize: fontSizes.large,
     fontWeight: "700",
   },
 });

@@ -12,28 +12,28 @@ export const colors = {
 };
 
 export const spacing = {
-  xs: 4,
-  sm: 8,
-  md: 16,
-  lg: 24,
-  xl: 32,
-  xxl: 48,
+  x_small: 4,
+  small: 8,
+  medium: 16,
+  large: 24,
+  x_large: 32,
+  xx_large: 48,
 };
 
 export const fontSizes = {
-  xs: 12,
-  sm: 14,
-  md: 16,
-  lg: 18,
-  xl: 22,
-  xxl: 28,
+  x_small: 12,
+  small: 14,
+  medium: 16,
+  large: 18,
+  x_large: 22,
+  xx_large: 28,
 };
 
 export const borderRadius = {
-  sm: 4,
-  md: 8,
-  lg: 16,
-  xl: 24,
+  small: 4,
+  medium: 8,
+  large: 16,
+  x_large: 24,
   round: 9999,
 };
 

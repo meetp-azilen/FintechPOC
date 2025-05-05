@@ -1,15 +1,15 @@
 import React from "react";
 import {
-  View,
-  Text,
-  FlatList,
-  StyleSheet,
   ActivityIndicator,
+  FlatList,
   RefreshControl,
+  StyleSheet,
+  Text,
+  View,
 } from "react-native";
 import { Transaction } from "../api/transactionApi";
+import { colors, fontSizes, spacing } from "../utils/theme";
 import TransactionItem from "./TransactionItem";
-import { colors, spacing, fontSizes } from "../utils/theme";
 
 interface TransactionListProps {
   transactions: Transaction[];
@@ -78,41 +78,41 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    padding: spacing.lg,
+    padding: spacing.large,
   },
   title: {
-    fontSize: fontSizes.xl,
+    fontSize: fontSizes.x_large,
     fontWeight: "700",
     color: colors.text,
-    marginBottom: spacing.md,
+    marginBottom: spacing.medium,
   },
   loadingText: {
-    marginTop: spacing.md,
-    fontSize: fontSizes.md,
+    marginTop: spacing.medium,
+    fontSize: fontSizes.medium,
     color: colors.textLight,
   },
   errorText: {
-    fontSize: fontSizes.lg,
+    fontSize: fontSizes.large,
     fontWeight: "600",
     color: colors.overBudget,
-    marginBottom: spacing.sm,
+    marginBottom: spacing.small,
   },
   errorDescription: {
-    fontSize: fontSizes.md,
+    fontSize: fontSizes.medium,
     color: colors.textLight,
     textAlign: "center",
   },
   emptyContainer: {
-    padding: spacing.xl,
+    padding: spacing.x_large,
     alignItems: "center",
     justifyContent: "center",
   },
   emptyText: {
-    fontSize: fontSizes.md,
+    fontSize: fontSizes.medium,
     color: colors.textLight,
   },
   listContent: {
-    paddingBottom: spacing.lg,
+    paddingBottom: spacing.large,
   },
 });
 

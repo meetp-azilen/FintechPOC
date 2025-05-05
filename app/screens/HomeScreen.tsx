@@ -9,14 +9,8 @@ import { useTransactions } from "../hooks/useTransactions";
 import { colors, spacing } from "../utils/theme";
 
 const HomeScreen: React.FC = () => {
-  const {
-    transactions,
-    isLoading,
-    error,
-    totalExpenses,
-    totalIncome,
-    refresh,
-  } = useTransactions();
+  const { transactions, isLoading, error, totalExpenses, refresh } =
+    useTransactions();
 
   const { budget, setBudgetAmount, getBudgetStatus } = useBudget();
 
@@ -59,8 +53,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primary,
   },
   header: {
-    padding: spacing.lg,
-    paddingBottom: spacing.md,
+    padding: spacing.large,
+    paddingBottom: spacing.medium,
   },
   title: {
     fontSize: 28,
@@ -73,9 +67,9 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 30,
   },
   content: {
-    paddingHorizontal: spacing.lg,
-    paddingTop: spacing.lg,
-    paddingBottom: spacing.xl,
+    paddingHorizontal: spacing.large,
+    paddingTop: spacing.large,
+    paddingBottom: spacing.x_large,
   },
 });
 
