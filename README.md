@@ -19,7 +19,7 @@ This application allows users to:
 
 2.  **Clone the Repository**:
     ```bash
-    git clone <your-repository-url>
+    git clone https://github.com/meetp-azilen/FintechPOC.git
     cd FintechPOC
     ```
 
@@ -55,5 +55,5 @@ yarn test
 ## Notes
 
 *   This application currently uses **mocked data** and does not connect to a real backend API.
-*   Budget persistence is simulated in the mock API layer; **AsyncStorage is not implemented** in this version.
+*   Budget persistence is simulated in the mock API layer.
 *   **Offline support is not yet implemented**. The app assumes network connectivity for fetching data (even though it's mocked).
