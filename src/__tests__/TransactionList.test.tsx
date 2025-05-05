@@ -1,7 +1,7 @@
 import { render, within } from '@testing-library/react-native'; // Import 'within'
 import React from 'react';
-import TransactionList from '../components/TransactionList';
-import { Transaction } from '../shared/api/transactionApi'; // Adjust path
+import TransactionList from "../modules/dashboard/components/TransactionList";
+import { Transaction } from "../shared/api/transactionApi"; // Adjust path
 import strings from "../shared/localization/strings"; // Import strings
 
 const mockOnRefresh = jest.fn();
@@ -25,7 +25,7 @@ const mockTransactions: Transaction[] = [
   },
 ];
 
-jest.mock("../components/TransactionItem", () => {
+jest.mock("../modules/dashboard/components/TransactionItem", () => {
   const { View, Text } = require("react-native");
   return (props: { transaction: Transaction }) => (
     <View testID="transaction-item">

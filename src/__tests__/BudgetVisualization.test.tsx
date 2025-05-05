@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react-native';
 import React from 'react';
-import BudgetVisualization from '../components/BudgetVisualization';
+import BudgetVisualization from "../modules/dashboard/components/BudgetVisualization";
 import strings from "../shared/localization/strings"; // Import strings
 
 jest.mock("react-native-circular-progress", () => {

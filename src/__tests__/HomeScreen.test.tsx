@@ -5,22 +5,22 @@ import HomeScreen from "../modules/dashboard/screens/HomeScreen";
 const mockUseTransactions = jest.fn();
 const mockUseBudget = jest.fn();
 
-jest.mock("../hooks/useTransactions", () => ({
+jest.mock("../shared/hooks/useTransactions", () => ({
   useTransactions: () => mockUseTransactions(),
 }));
-jest.mock("../hooks/useBudget", () => ({
+jest.mock("../shared/hooks/useBudget", () => ({
   useBudget: () => mockUseBudget(),
 }));
 
-jest.mock("../components/BudgetInput", () => {
+jest.mock("../modules/dashboard/components/BudgetInput", () => {
   const { Text } = require("react-native");
   return () => <Text>BudgetInput</Text>;
 });
-jest.mock("../components/BudgetVisualization", () => {
+jest.mock("../modules/dashboard/components/BudgetVisualization", () => {
   const { Text } = require("react-native");
   return () => <Text>BudgetVisualization</Text>;
 });
-jest.mock("../components/TransactionList", () => {
+jest.mock("../modules/dashboard/components/TransactionList", () => {
   const { Text } = require("react-native");
   return () => <Text>TransactionList</Text>;
 });
