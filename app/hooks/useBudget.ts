@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { LOAD_BUDGET_FAILED, SET_BUDGET_FAILED } from "../constants/errors";
 import { budgetStatus, getBudget, saveBudget } from "../utils/budgetService";
 
 interface BudgetState {
@@ -21,9 +22,7 @@ export const useBudget = (): BudgetState => {
         const savedBudget = await getBudget();
         setBudget(savedBudget);
       } catch (err) {
-        setError(
-          err instanceof Error ? err : new Error("Failed to load budget")
-        );
+        setError(err instanceof Error ? err : new Error(LOAD_BUDGET_FAILED));
       } finally {
         setIsLoading(false);
       }
@@ -37,7 +36,7 @@ export const useBudget = (): BudgetState => {
       await saveBudget(amount);
       setBudget(amount);
     } catch (err) {
-      setError(err instanceof Error ? err : new Error("Failed to set budget"));
+      setError(err instanceof Error ? err : new Error(SET_BUDGET_FAILED));
       throw err;
     }
   }, []);

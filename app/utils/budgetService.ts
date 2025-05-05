@@ -1,4 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { SAVE_BUDGET_FAILED } from "../constants/errors";
 
 const BUDGET_KEY = "fintech_app_budget";
 
@@ -7,7 +8,7 @@ export const saveBudget = async (amount: number): Promise<void> => {
     await AsyncStorage.setItem(BUDGET_KEY, amount.toString());
   } catch (error) {
     console.error("Error saving budget:", error);
-    throw new Error("Failed to save budget");
+    throw new Error(SAVE_BUDGET_FAILED);
   }
 };
 

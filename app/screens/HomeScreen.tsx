@@ -6,6 +6,7 @@ import BudgetVisualization from "../components/BudgetVisualization";
 import TransactionList from "../components/TransactionList";
 import { useBudget } from "../hooks/useBudget";
 import { useTransactions } from "../hooks/useTransactions";
+import strings from "../localization/strings";
 import { colors, spacing } from "../utils/theme";
 
 const HomeScreen: React.FC = () => {
@@ -21,7 +22,7 @@ const HomeScreen: React.FC = () => {
       <StatusBar style="light" />
 
       <View style={styles.header}>
-        <Text style={styles.title}>Track your Finance</Text>
+        <Text style={styles.title}>{strings.homeScreenTitle}</Text>
       </View>
 
       <ScrollView
@@ -59,7 +60,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 28,
     fontWeight: "bold",
-    color: "white",
+    color: colors.white,
   },
   scrollView: {
     backgroundColor: colors.secondary,

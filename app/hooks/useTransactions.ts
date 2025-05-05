@@ -5,6 +5,7 @@ import {
   getTotalExpense,
   getTotalIncome,
 } from "../api/transactionApi";
+import { UNKNOWN_ERROR } from "../constants/errors";
 
 interface TransactionsState {
   transactions: Transaction[];
@@ -33,9 +34,7 @@ export const useTransactions = (): TransactionsState => {
       setTotalExpenses(getTotalExpense(data));
       setTotalIncome(getTotalIncome(data));
     } catch (err) {
-      setError(
-        err instanceof Error ? err : new Error("Unknown error occurred")
-      );
+      setError(err instanceof Error ? err : new Error(UNKNOWN_ERROR));
     } finally {
       setIsLoading(false);
     }

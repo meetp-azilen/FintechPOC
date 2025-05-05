@@ -1,9 +1,10 @@
 import { render } from '@testing-library/react-native';
 import React from 'react';
 import BudgetVisualization from '../components/BudgetVisualization';
+import strings from "../localization/strings"; // Import strings
 
-jest.mock('react-native-circular-progress', () => {
-  const { View } = require('react-native');
+jest.mock("react-native-circular-progress", () => {
+  const { View } = require("react-native");
   return {
     AnimatedCircularProgress: ({ fill, children }: any) => (
       <View testID="mock-circular-progress">{children(fill)}</View>
@@ -11,7 +12,7 @@ jest.mock('react-native-circular-progress', () => {
   };
 });
 
-describe('BudgetVisualization Component', () => {
+describe("BudgetVisualization Component", () => {
   it('renders "no budget" message when status is "none"', () => {
     const { getByText } = render(
       <BudgetVisualization
@@ -20,8 +21,8 @@ describe('BudgetVisualization Component', () => {
         budgetStatus="none"
       />
     );
-    expect(getByText('Set a monthly budget to track your spending')).toBeTruthy();
-    expect(getByText('Budget Status')).toBeTruthy(); // Title should still be there
+    expect(getByText(strings.budgetVisPromptSetBudget)).toBeTruthy();
+    expect(getByText(strings.budgetVisTitle)).toBeTruthy(); // Title should still be there
   });
 
   it('renders "under budget" status correctly', () => {
@@ -33,13 +34,15 @@ describe('BudgetVisualization Component', () => {
       />
     );
 
-    expect(getByText('Under Budget')).toBeTruthy();
-    expect(getByText('$200.00 remaining')).toBeTruthy();
+    expect(getByText(strings.budgetVisStatusUnder)).toBeTruthy();
+    expect(
+      getByText(`$200.00${strings.budgetVisRemainingSuffix}`)
+    ).toBeTruthy();
 
-    const progress = getByTestId('mock-circular-progress');
+    const progress = getByTestId("mock-circular-progress");
     // Check text inside progress
-    expect(getByText('80%')).toBeTruthy();
-    expect(getByText('Spent')).toBeTruthy();
+    expect(getByText(`80${strings.budgetVisPercentageSymbol}`)).toBeTruthy();
+    expect(getByText(strings.budgetVisSpentLabel)).toBeTruthy();
   });
 
   it('renders "over budget" status correctly', () => {
@@ -51,30 +54,32 @@ describe('BudgetVisualization Component', () => {
       />
     );
 
-    expect(getByText('Over Budget')).toBeTruthy();
-    expect(getByText('$200.00 over budget')).toBeTruthy();
+    expect(getByText(strings.budgetVisStatusOver)).toBeTruthy();
+    expect(
+      getByText(`$200.00${strings.budgetVisOverBudgetSuffix}`)
+    ).toBeTruthy();
 
-    const progress = getByTestId('mock-circular-progress');
+    const progress = getByTestId("mock-circular-progress");
 
     // Check text inside progress
-    expect(getByText('120%')).toBeTruthy();
-    expect(getByText('Spent')).toBeTruthy();
+    expect(getByText(`120${strings.budgetVisPercentageSymbol}`)).toBeTruthy();
+    expect(getByText(strings.budgetVisSpentLabel)).toBeTruthy();
   });
 
-   it('handles zero budget correctly (shows 0% progress if expenses exist)', () => {
-     const { getByText, getByTestId } = render(
+  it("handles zero budget correctly (shows 0% progress if expenses exist)", () => {
+    const { getByText, getByTestId } = render(
       <BudgetVisualization
         totalExpenses={50}
-        budget={null} 
-        budgetStatus="under" 
+        budget={null}
+        budgetStatus="under" // This scenario might be tricky depending on component logic
       />
     );
 
     // Assuming if budget is null, progress is 0, even if status isn't 'none'
-    const progress = getByTestId('mock-circular-progress');
+    const progress = getByTestId("mock-circular-progress");
 
-    // Check text inside progress
-    expect(getByText('0%')).toBeTruthy();
-    expect(getByText('Spent')).toBeTruthy();
+    // Check text inside progress - Assuming 0% when budget is null
+    expect(getByText(`0${strings.budgetVisPercentageSymbol}`)).toBeTruthy();
+    expect(getByText(strings.budgetVisSpentLabel)).toBeTruthy();
   });
 });

@@ -9,6 +9,7 @@ export const colors = {
   border: "#dddddd",
   income: "#2ecc71",
   expense: "#e74c3c",
+  white: "#ffffff",
 };
 
 export const spacing = {

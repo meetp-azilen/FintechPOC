@@ -8,6 +8,7 @@ import {
   View,
 } from "react-native";
 import { Transaction } from "../api/transactionApi";
+import strings from "../localization/strings"; // Import strings
 import { colors, fontSizes, spacing } from "../utils/theme";
 import TransactionItem from "./TransactionItem";
 
@@ -28,7 +29,7 @@ const TransactionList: React.FC<TransactionListProps> = ({
     return (
       <View style={styles.centerContent}>
         <ActivityIndicator size="large" color={colors.primary} />
-        <Text style={styles.loadingText}>Loading transactions...</Text>
+        <Text style={styles.loadingText}>{strings.loadingTransactions}</Text>
       </View>
     );
   }
@@ -36,7 +37,10 @@ const TransactionList: React.FC<TransactionListProps> = ({
   if (error && transactions.length === 0) {
     return (
       <View style={styles.centerContent}>
-        <Text style={styles.errorText}>Failed to load transactions</Text>
+        <Text style={styles.errorText}>
+          {strings.errorLoadTransactionsPrefix.replace(": ", "")}
+        </Text>{" "}
+        {/* Adjust string if needed */}
         <Text style={styles.errorDescription}>{error.message}</Text>
       </View>
     );
@@ -44,15 +48,17 @@ const TransactionList: React.FC<TransactionListProps> = ({
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Recent Transactions</Text>
+      <Text style={styles.title}>{strings.transactionsTitle}</Text>
 
       {transactions.length === 0 ? (
         <View style={styles.emptyContainer}>
-          <Text style={styles.emptyText}>No transactions found</Text>
+          <Text style={styles.emptyText}>{strings.noTransactions}</Text>
         </View>
       ) : (
         <FlatList
-          data={transactions}
+          data={transactions.sort(
+            (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+          )}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => <TransactionItem transaction={item} />}
           refreshControl={

@@ -1,5 +1,6 @@
 import { render } from "@testing-library/react-native";
 import React from "react";
+import strings from "../localization/strings"; // Import strings
 import HomeScreen from "../screens/HomeScreen";
 
 const mockUseTransactions = jest.fn();
@@ -14,15 +15,15 @@ jest.mock("../hooks/useBudget", () => ({
 
 jest.mock("../components/BudgetInput", () => {
   const { Text } = require("react-native");
-  return () => <Text>BudgetInput</Text>;
+  return () => <Text>{strings.testBudgetInputComponentName}</Text>;
 });
 jest.mock("../components/BudgetVisualization", () => {
   const { Text } = require("react-native");
-  return () => <Text>BudgetVisualization</Text>;
+  return () => <Text>{strings.testBudgetVisualizationComponentName}</Text>;
 });
 jest.mock("../components/TransactionList", () => {
   const { Text } = require("react-native");
-  return () => <Text>TransactionList</Text>;
+  return () => <Text>{strings.testTransactionListComponentName}</Text>;
 });
 
 describe("HomeScreen", () => {
@@ -45,10 +46,12 @@ describe("HomeScreen", () => {
   it("renders correctly with initial state", () => {
     const { getByText } = render(<HomeScreen />);
 
-    expect(getByText("Track your Finance")).toBeTruthy();
-    expect(getByText("BudgetInput")).toBeTruthy();
-    expect(getByText("BudgetVisualization")).toBeTruthy();
-    expect(getByText("TransactionList")).toBeTruthy();
+    expect(getByText(strings.homeScreenTitle)).toBeTruthy();
+    expect(getByText(strings.testBudgetInputComponentName)).toBeTruthy();
+    expect(
+      getByText(strings.testBudgetVisualizationComponentName)
+    ).toBeTruthy();
+    expect(getByText(strings.testTransactionListComponentName)).toBeTruthy();
   });
 
   it("passes correct initial props to child components", () => {

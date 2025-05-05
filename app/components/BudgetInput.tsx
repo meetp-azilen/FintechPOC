@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   View
 } from "react-native";
+import strings from "../localization/strings"; // Import strings
 import {
   borderRadius,
   colors,
@@ -38,13 +39,13 @@ const BudgetInput: React.FC<BudgetInputProps> = ({ budget, setBudget }) => {
 
   const handleSave = async () => {
     if (!inputValue.trim()) {
-      setError("Please enter a budget amount");
+      setError(strings.budgetInputErrorEmpty);
       return;
     }
 
     const amount = parseFloat(inputValue);
     if (isNaN(amount) || amount <= 0) {
-      setError("Please enter a valid budget amount");
+      setError(strings.budgetInputErrorInvalid);
       return;
     }
 
@@ -66,18 +67,22 @@ const BudgetInput: React.FC<BudgetInputProps> = ({ budget, setBudget }) => {
         }),
       ]).start();
     } catch (err) {
-      setError("Failed to save budget");
+      setError(strings.budgetInputErrorSave);
     }
   };
 
   return (
     <Animated.View style={[styles.container, { opacity: fadeAnim }]}>
-      <Text style={styles.title}>{isEditing ? "Set Monthly Budget" : "Monthly Budget"}</Text>
+      <Text style={styles.title}>
+        {isEditing ? strings.budgetInputSetTitle : strings.budgetInputViewTitle}
+      </Text>
 
       {isEditing ? (
         <>
           <View style={styles.inputContainer}>
-            <Text style={styles.dollarSign}>$</Text>
+            <Text style={styles.dollarSign}>
+              {strings.budgetInputDollarSign}
+            </Text>
             <TextInput
               style={styles.input}
               value={inputValue}
@@ -85,7 +90,7 @@ const BudgetInput: React.FC<BudgetInputProps> = ({ budget, setBudget }) => {
                 setInputValue(text);
                 setError(null);
               }}
-              placeholder="Enter budget amount"
+              placeholder={strings.budgetInputPlaceholder}
               keyboardType="numeric"
               autoFocus
             />
@@ -94,7 +99,9 @@ const BudgetInput: React.FC<BudgetInputProps> = ({ budget, setBudget }) => {
           {error && <Text style={styles.errorText}>{error}</Text>}
 
           <TouchableOpacity style={styles.button} onPress={handleSave}>
-            <Text style={styles.buttonText}>Save Budget</Text>
+            <Text style={styles.buttonText}>
+              {strings.budgetInputSaveButton}
+            </Text>
           </TouchableOpacity>
         </>
       ) : (

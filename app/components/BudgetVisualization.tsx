@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { AnimatedCircularProgress } from "react-native-circular-progress";
+import strings from "../localization/strings"; // Import strings
 import {
   borderRadius,
   colors,
@@ -24,10 +25,12 @@ const BudgetVisualization: React.FC<BudgetVisualizationProps> = ({
   if (budgetStatus === "none") {
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>Budget Status</Text>
+        <Text style={styles.title}>{strings.budgetVisTitle}</Text>
         <View style={styles.noBudgetContainer}>
           <Text style={styles.noBudgetText}>
-            Set a monthly budget to track your spending
+            {" "}
+            // Corrected style name if needed Set a monthly budget to track your
+            spending
           </Text>
         </View>
       </View>
@@ -38,16 +41,21 @@ const BudgetVisualization: React.FC<BudgetVisualizationProps> = ({
 
   const progressColor =
     budgetStatus === "under" ? colors.underBudget : colors.overBudget;
-  const statusText = budgetStatus === "under" ? "Under Budget" : "Over Budget";
+  const statusText =
+    budgetStatus === "under"
+      ? strings.budgetVisStatusUnder
+      : strings.budgetVisStatusOver;
   const remainingBudget = budget ? budget - totalExpenses : 0;
   const remainingText =
     remainingBudget >= 0
-      ? `$${remainingBudget.toFixed(2)} remaining`
-      : `$${Math.abs(remainingBudget).toFixed(2)} over budget`;
+      ? `$${remainingBudget.toFixed(2)}${strings.budgetVisRemainingSuffix}`
+      : `$${Math.abs(remainingBudget).toFixed(2)}${
+          strings.budgetVisOverBudgetSuffix
+        }`;
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Budget Status</Text>
+      <Text style={styles.title}>{strings.budgetVisTitle}</Text>
 
       <View style={styles.statusContainer}>
         <Text style={[styles.statusText, { color: progressColor }]}>
@@ -72,9 +80,13 @@ const BudgetVisualization: React.FC<BudgetVisualizationProps> = ({
             <View style={styles.circularProgressContent}>
               <Text
                 style={styles.progressPercentText}
-                adjustsFontSizeToFit
-              >{`${Math.round(fill)}%`}</Text>
-              <Text style={styles.progressSpentText}>Spent</Text>
+                adjustsFontSizeToFit // Keep this prop if needed
+              >{`${Math.round(fill)}${
+                strings.budgetVisPercentageSymbol
+              }`}</Text>
+              <Text style={styles.progressSpentText}>
+                {strings.budgetVisSpentLabel}
+              </Text>
             </View>
           )}
         </AnimatedCircularProgress>
@@ -140,6 +152,7 @@ const styles = StyleSheet.create({
     borderRadius: borderRadius.medium,
   },
   noBudgetText: {
+    // Corrected style name
     fontSize: fontSizes.medium,
     color: colors.textLight,
     textAlign: "center",

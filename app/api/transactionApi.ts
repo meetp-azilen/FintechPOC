@@ -1,3 +1,6 @@
+import { FETCH_TRANSACTIONS_FAILED } from "../constants/errors"; // Import error constants
+//
+
 export interface Transaction {
   id: string;
   date: string;
@@ -86,7 +89,7 @@ export const fetchTransactions = async (): Promise<Transaction[]> => {
 
     // Simulate random API failure (10% chance)
     if (Math.random() < 0.1) {
-      throw new Error("Failed to fetch transactions");
+      throw new Error(FETCH_TRANSACTIONS_FAILED);
     }
 
     return mockTransactions;
