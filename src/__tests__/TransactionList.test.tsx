@@ -1,8 +1,8 @@
 import { render, within } from '@testing-library/react-native'; // Import 'within'
 import React from 'react';
-import { Transaction } from '../api/transactionApi'; // Adjust path
 import TransactionList from '../components/TransactionList';
-import strings from "../localization/strings"; // Import strings
+import { Transaction } from '../shared/api/transactionApi'; // Adjust path
+import strings from "../shared/localization/strings"; // Import strings
 
 const mockOnRefresh = jest.fn();
 

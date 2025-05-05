@@ -1,13 +1,13 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { Transaction } from "../api/transactionApi";
+import { Transaction } from "../../../shared/api/transactionApi";
 import {
   borderRadius,
   colors,
   fontSizes,
   shadows,
   spacing,
-} from "../utils/theme";
+} from "../../../shared/utils/theme";
 
 interface TransactionItemProps {
   transaction: Transaction;

@@ -1,7 +1,7 @@
 import { fireEvent, render, waitFor } from '@testing-library/react-native';
 import React from 'react';
 import BudgetInput from '../components/BudgetInput';
-import strings from "../localization/strings"; // Import strings
+import strings from "../shared/localization/strings"; // Import strings
 
 const mockSetBudget = jest.fn(() => Promise.resolve());
 

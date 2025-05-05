@@ -1,14 +1,14 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { AnimatedCircularProgress } from "react-native-circular-progress";
-import strings from "../localization/strings"; // Import strings
+import strings from "../../../shared/localization/strings"; // Import strings
 import {
   borderRadius,
   colors,
   fontSizes,
   shadows,
   spacing,
-} from "../utils/theme";
+} from "../../../shared/utils/theme";
 
 
 interface BudgetVisualizationProps {

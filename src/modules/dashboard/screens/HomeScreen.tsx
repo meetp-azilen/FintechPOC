@@ -1,13 +1,13 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { SafeAreaView, ScrollView, StyleSheet, Text, View } from "react-native";
+import { useBudget } from "../../../shared/hooks/useBudget";
+import { useTransactions } from "../../../shared/hooks/useTransactions";
+import strings from "../../../shared/localization/strings";
+import { colors, spacing } from "../../../shared/utils/theme";
 import BudgetInput from "../components/BudgetInput";
 import BudgetVisualization from "../components/BudgetVisualization";
 import TransactionList from "../components/TransactionList";
-import { useBudget } from "../hooks/useBudget";
-import { useTransactions } from "../hooks/useTransactions";
-import strings from "../localization/strings";
-import { colors, spacing } from "../utils/theme";
 
 const HomeScreen: React.FC = () => {
   const { transactions, isLoading, error, totalExpenses, refresh } =

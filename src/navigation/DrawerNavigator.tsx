@@ -1,7 +1,7 @@
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import React from "react";
-import BottomTabNavigator from "./BottomTabNavigator"; // Import the tabs
-import CustomDrawerContent from "./CustomDrawerContent"; // Import custom content
+import BottomTabNavigator from "./BottomTabNavigator";
+import CustomDrawerContent from "./CustomDrawerContent";
 
 // You can import other screens here if you want them ONLY in the drawer
 // import HelpScreen from '../screens/HelpScreen';

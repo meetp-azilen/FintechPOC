@@ -8,14 +8,14 @@ import {
   TouchableOpacity,
   View
 } from "react-native";
-import strings from "../localization/strings"; // Import strings
+import strings from "../../../shared/localization/strings"; // Import strings
 import {
   borderRadius,
   colors,
   fontSizes,
   shadows,
   spacing,
-} from "../utils/theme";
+} from "../../../shared/utils/theme";
 
 interface BudgetInputProps {
   budget: number | null;

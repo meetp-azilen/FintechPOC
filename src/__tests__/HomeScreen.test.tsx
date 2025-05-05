@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react-native";
 import React from "react";
-import HomeScreen from "../screens/HomeScreen";
+import HomeScreen from "../modules/dashboard/screens/HomeScreen";
 
 const mockUseTransactions = jest.fn();
 const mockUseBudget = jest.fn();

@@ -1,12 +1,12 @@
 import Ionicons from "@expo/vector-icons/Ionicons"; // Or your preferred icon library
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React from "react";
+import HomeScreen from "../modules/dashboard/screens/HomeScreen";
+import ProfileScreen from "../modules/profile/screens/ProfileScreen";
+import ReportsScreen from "../modules/reports/screens/ReportsScreen";
+import SettingsScreen from "../modules/settings/screens/SettingsScreen";
 
 // Import your screens
-import HomeScreen from "../screens/HomeScreen"; // Adjust path if needed
-import ProfileScreen from "../screens/ProfileScreen";
-import ReportsScreen from "../screens/ReportsScreen";
-import SettingsScreen from "../screens/SettingsScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -33,7 +33,7 @@ const BottomTabNavigator = () => {
         },
         tabBarActiveTintColor: "tomato",
         tabBarInactiveTintColor: "gray",
-        headerShown: false, // Hide header here because Drawer provides it
+        headerShown: false, 
       })}
     >
       <Tab.Screen name="Home" component={HomeScreen} />
