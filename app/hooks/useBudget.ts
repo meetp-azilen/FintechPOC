@@ -1,5 +1,5 @@
-import { useState, useEffect, useCallback } from "react";
-import { saveBudget, getBudget, budgetStatus } from "../utils/budgetService";
+import { useCallback, useEffect, useState } from "react";
+import { budgetStatus, getBudget, saveBudget } from "../utils/budgetService";
 
 interface BudgetState {
   budget: number | null;
@@ -14,7 +14,6 @@ export const useBudget = (): BudgetState => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
 
-  // Load budget on mount
   useEffect(() => {
     const loadBudget = async () => {
       try {
@@ -33,7 +32,6 @@ export const useBudget = (): BudgetState => {
     loadBudget();
   }, []);
 
-  // Set new budget
   const setBudgetAmount = useCallback(async (amount: number) => {
     try {
       await saveBudget(amount);
@@ -44,7 +42,6 @@ export const useBudget = (): BudgetState => {
     }
   }, []);
 
-  // Get budget status
   const getBudgetStatus = useCallback(
     (expenses: number) => {
       return budgetStatus(expenses, budget);

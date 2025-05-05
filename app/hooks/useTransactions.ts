@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   Transaction,
   fetchTransactions,
@@ -30,7 +30,6 @@ export const useTransactions = (): TransactionsState => {
       const data = await fetchTransactions();
       setTransactions(data);
 
-      // Calculate totals
       setTotalExpenses(getTotalExpense(data));
       setTotalIncome(getTotalIncome(data));
     } catch (err) {

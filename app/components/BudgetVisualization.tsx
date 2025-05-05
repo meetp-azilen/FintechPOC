@@ -21,7 +21,6 @@ const BudgetVisualization: React.FC<BudgetVisualizationProps> = ({
   budget,
   budgetStatus,
 }) => {
-  // If no budget set, show a placeholder
   if (budgetStatus === "none") {
     return (
       <View style={styles.container}>
@@ -35,10 +34,8 @@ const BudgetVisualization: React.FC<BudgetVisualizationProps> = ({
     );
   }
 
-  // Calculate progress percentage (can exceed 100% for over budget)
   const progress = budget ? (totalExpenses / budget) * 100 : 0;
 
-  // Determine colors based on budget status
   const progressColor =
     budgetStatus === "under" ? colors.underBudget : colors.overBudget;
   const statusText = budgetStatus === "under" ? "Under Budget" : "Over Budget";
@@ -62,18 +59,21 @@ const BudgetVisualization: React.FC<BudgetVisualizationProps> = ({
       {/* Circular Progress Bar */}
       <View style={styles.circularProgressContainer}>
         <AnimatedCircularProgress
-          size={120} // Adjust size as needed
-          width={15} // Adjust thickness as needed
-          fill={progress} // Use the calculated progress
-          tintColor={progressColor} // Color for the progress arc
-          backgroundColor={colors.secondary} // Background color of the circle
-          rotation={0} // Start from the top
+          size={120}
+          width={15}
+          fill={progress}
+          tintColor={progressColor}
+          backgroundColor={colors.secondary}
+          rotation={0}
           lineCap="round"
-          padding={10} // Optional padding
+          padding={10}
         >
           {(fill: number) => (
             <View style={styles.circularProgressContent}>
-              <Text style={styles.progressPercentText} adjustsFontSizeToFit>{`${Math.round(fill)}%`}</Text>
+              <Text
+                style={styles.progressPercentText}
+                adjustsFontSizeToFit
+              >{`${Math.round(fill)}%`}</Text>
               <Text style={styles.progressSpentText}>Spent</Text>
             </View>
           )}
@@ -112,27 +112,26 @@ const styles = StyleSheet.create({
     color: colors.textLight,
   },
   circularProgressContainer: {
-    alignItems: "center", // Center the circular progress
+    alignItems: "center",
     marginBottom: spacing.md,
   },
   circularProgressContent: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'column',
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "column",
   },
   progressPercentText: {
     fontSize: fontSizes.lg,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     color: colors.text,
-    alignContent: 'center',
-    textAlign: 'center',
+    alignContent: "center",
+    textAlign: "center",
   },
   progressSpentText: {
     fontSize: fontSizes.sm,
     color: colors.textLight,
     marginTop: spacing.xs,
   },
-  // Removed styles: progressContainer, progressBackground, progressFill, labelsContainer, expenseLabel, budgetLabel
   noBudgetContainer: {
     padding: spacing.lg,
     alignItems: "center",

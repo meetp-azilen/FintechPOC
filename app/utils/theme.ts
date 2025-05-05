@@ -1,6 +1,6 @@
 export const colors = {
-  primary: "#3498db", // Calming blue for main background
-  secondary: "#f2f2f2", // Light grey for card backgrounds
+  primary: "#3291a8", // Blue for primary actions
+  secondary: "#f2f2f2", // Light grey for background
   underBudget: "#2ecc71", // Green for under budget
   overBudget: "#e74c3c", // Red for over budget
   text: "#333333",

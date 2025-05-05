@@ -9,7 +9,6 @@ import { useTransactions } from "../hooks/useTransactions";
 import { colors, spacing } from "../utils/theme";
 
 const HomeScreen: React.FC = () => {
-  // Transactions hook
   const {
     transactions,
     isLoading,
@@ -19,10 +18,8 @@ const HomeScreen: React.FC = () => {
     refresh,
   } = useTransactions();
 
-  // Budget hook
   const { budget, setBudgetAmount, getBudgetStatus } = useBudget();
 
-  // Get budget status
   const budgetStatus = getBudgetStatus(totalExpenses);
 
   return (

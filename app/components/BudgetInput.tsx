@@ -33,15 +33,10 @@ const BudgetInput: React.FC<BudgetInputProps> = ({ budget, setBudget }) => {
     if (budget !== null) {
       setInputValue(budget.toString());
       setIsEditing(false);
-    } else {
-      // Optional: Reset to default if budget becomes null externally
-      // setInputValue("1500");
-      // setIsEditing(true);
     }
-  }, [budget]); 
+  }, [budget]);
 
   const handleSave = async () => {
-    // Validate input
     if (!inputValue.trim()) {
       setError("Please enter a budget amount");
       return;
@@ -58,7 +53,6 @@ const BudgetInput: React.FC<BudgetInputProps> = ({ budget, setBudget }) => {
       setIsEditing(false);
       setError(null);
 
-      // Add animation when budget is set
       Animated.sequence([
         Animated.timing(fadeAnim, {
           toValue: 0.5,
@@ -128,7 +122,7 @@ const styles = StyleSheet.create({
     padding: spacing.lg,
     marginBottom: spacing.md,
     ...shadows.medium,
-    position: "relative", // Needed for absolute positioning of the icon
+    position: "relative",
   },
   title: {
     fontSize: fontSizes.lg,
@@ -173,19 +167,18 @@ const styles = StyleSheet.create({
     marginBottom: spacing.md,
   },
   budgetDisplay: {
-    flexDirection: "row", // Arrange items horizontally
-    justifyContent: "center", // Center items horizontally
+    flexDirection: "row",
+    justifyContent: "center",
     alignItems: "center",
-    marginVertical: spacing.sm, // Adjust vertical margin if needed
+    marginVertical: spacing.sm,
   },
   budgetAmount: {
-    fontSize: fontSizes.xl, // Slightly smaller to make space
+    fontSize: fontSizes.xl,
     fontWeight: "700",
     color: colors.text,
   },
   editIconContainer: {
-    // Remove absolute positioning
-    marginLeft: spacing.sm, // Add space between amount and icon
+    marginLeft: spacing.sm,
   },
 });
 

@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     ...shadows.small,
-    borderLeftWidth: 4, // Adjusted width slightly for visibility
+    borderLeftWidth: 4,
   },
   leftContent: {
     flex: 1,
