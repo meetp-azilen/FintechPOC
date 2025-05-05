@@ -28,9 +28,7 @@ const BudgetVisualization: React.FC<BudgetVisualizationProps> = ({
         <Text style={styles.title}>{strings.budgetVisTitle}</Text>
         <View style={styles.noBudgetContainer}>
           <Text style={styles.noBudgetText}>
-            {" "}
-            // Corrected style name if needed Set a monthly budget to track your
-            spending
+            {strings.budgetVisPromptSetBudget}
           </Text>
         </View>
       </View>

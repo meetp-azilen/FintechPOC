@@ -1,6 +1,7 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useCallback, useEffect, useState } from "react";
 import { LOAD_BUDGET_FAILED, SET_BUDGET_FAILED } from "../constants/errors";
-import { budgetStatus, getBudget, saveBudget } from "../utils/budgetService";
+import { budgetStatus } from "../utils/budgetService"; // Removed getBudget, saveBudget
 
 interface BudgetState {
   budget: number | null;
@@ -9,6 +10,8 @@ interface BudgetState {
   error: Error | null;
   getBudgetStatus: (expenses: number) => "under" | "over" | "none";
 }
+
+const BUDGET_STORAGE_KEY = "@userBudget"; // Define a key for AsyncStorage
 
 export const useBudget = (): BudgetState => {
   const [budget, setBudget] = useState<number | null>(null);
@@ -19,8 +22,13 @@ export const useBudget = (): BudgetState => {
     const loadBudget = async () => {
       try {
         setIsLoading(true);
-        const savedBudget = await getBudget();
-        setBudget(savedBudget);
+        setError(null);
+        const storedBudget = await AsyncStorage.getItem(BUDGET_STORAGE_KEY);
+        if (storedBudget !== null) {
+          setBudget(parseFloat(storedBudget));
+        } else {
+          setBudget(null);
+        }
       } catch (err) {
         setError(err instanceof Error ? err : new Error(LOAD_BUDGET_FAILED));
       } finally {
@@ -33,8 +41,15 @@ export const useBudget = (): BudgetState => {
 
   const setBudgetAmount = useCallback(async (amount: number) => {
     try {
-      await saveBudget(amount);
-      setBudget(amount);
+      setError(null); // Clear previous errors
+      if (amount !== null && amount > 0) {
+        await AsyncStorage.setItem(BUDGET_STORAGE_KEY, amount.toString());
+        setBudget(amount);
+      } else {
+        // If amount is invalid (e.g., 0 or negative), remove it or handle as needed
+        await AsyncStorage.removeItem(BUDGET_STORAGE_KEY);
+        setBudget(null);
+      }
     } catch (err) {
       setError(err instanceof Error ? err : new Error(SET_BUDGET_FAILED));
       throw err;

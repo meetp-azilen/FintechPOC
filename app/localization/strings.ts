@@ -32,7 +32,6 @@ const strings = {
     testBudgetInputComponentName: "BudgetInput",
     testBudgetVisualizationComponentName: "BudgetVisualization",
     testTransactionListComponentName: "TransactionList",
-
   },
   // Add other languages here later, e.g., es: { ... }
 };

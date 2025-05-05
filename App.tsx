@@ -1,13 +1,11 @@
+import { NavigationContainer } from "@react-navigation/native";
 import React from "react";
-import { StyleSheet } from "react-native";
-import HomeScreen from "./app/screens/HomeScreen";
+import DrawerNavigator from "./app/navigation/DrawerNavigator"; // Import the main navigator
 
 export default function App() {
-  return <HomeScreen />;
+  return (
+    <NavigationContainer>
+      <DrawerNavigator />
+    </NavigationContainer>
+  );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
