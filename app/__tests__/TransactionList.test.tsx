@@ -82,7 +82,7 @@ describe('TransactionList Component', () => {
   });
 
   it('calls onRefresh when FlatList refresh is triggered', () => {
-    const { getByTestId } = render( // Assuming FlatList gets a testID="transaction-flatlist"
+    const { getByTestId } = render(
       <TransactionList
         transactions={mockTransactions}
         isLoading={false}

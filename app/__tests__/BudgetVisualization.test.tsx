@@ -5,10 +5,8 @@ import BudgetVisualization from '../components/BudgetVisualization';
 jest.mock('react-native-circular-progress', () => {
   const { View } = require('react-native');
   return {
-    AnimatedCircularProgress: ({ size, width, fill, tintColor, backgroundColor, children }: any) => (
-      <View testID="mock-circular-progress">
-      {children(fill)}
-      </View>
+    AnimatedCircularProgress: ({ fill, children }: any) => (
+      <View testID="mock-circular-progress">{children(fill)}</View>
     ),
   };
 });
