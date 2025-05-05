@@ -1,50 +1,59 @@
-# Welcome to your Expo app 👋
+# Fintech POC App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A simple React Native proof-of-concept application demonstrating basic fintech functionalities like transaction tracking and budget management.
 
-## Get started
+## Description
 
-1. Install dependencies
+This application allows users to:
+*   View a list of recent financial transactions fetched from a simulated API.
+*   Set a monthly spending budget.
+*   See a visual representation of their spending relative to the set budget, indicating whether they are under or over budget.
 
-   ```bash
-   npm install
-   ```
+## Setup Instructions
 
-2. Start the app
+1.  **Prerequisites**:
+    *   Node.js (LTS version recommended)
+    *   npm or Yarn
+    *   Expo CLI: `npm install -g expo-cli`
+    *   Git
 
-   ```bash
-   npx expo start
-   ```
+2.  **Clone the Repository**:
+    ```bash
+    git clone <your-repository-url>
+    cd FintechPOC
+    ```
 
-In the output, you'll find options to open the app in a
+3.  **Install Dependencies**:
+    ```bash
+    npm install
+    # or
+    yarn install
+    ```
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Running the Project
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+1.  **Start the Development Server**:
+    ```bash
+    npx expo start
+    # or
+    yarn start
+    ```
+2.  Follow the instructions in the terminal to open the app on:
+    *   An iOS simulator (requires Xcode)
+    *   An Android emulator (requires Android Studio)
+    *   A physical device using the Expo Go app.
 
-## Get a fresh project
+## Running Tests
 
-When you're ready, run:
-
+Execute the following command to run the unit tests:
 ```bash
-npm run reset-project
+npm test
+# or
+yarn test
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Notes
 
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+*   This application currently uses **mocked data** and does not connect to a real backend API.
+*   Budget persistence is simulated in the mock API layer; **AsyncStorage is not implemented** in this version.
+*   **Offline support is not yet implemented**. The app assumes network connectivity for fetching data (even though it's mocked).
