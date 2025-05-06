@@ -7,13 +7,9 @@ import {
   Text,
   View,
 } from "react-native";
-import { Transaction } from "../../../shared/api/transactionApi";
+import { Transaction } from "../../../shared/api/models/Transaction";
 import strings from "../../../shared/localization/strings"; // Import strings
-import {
-  colors,
-  fontSizes,
-  spacing
-} from "../../../shared/utils/theme";
+import { colors, fontSizes, spacing } from "../../../shared/utils/theme";
 import TransactionItem from "./TransactionItem";
 
 interface TransactionListProps {

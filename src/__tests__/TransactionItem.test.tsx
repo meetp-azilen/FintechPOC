@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react-native';
 import React from 'react';
 import TransactionItem from "../modules/dashboard/components/TransactionItem";
-import { Transaction } from '../shared/api/transactionApi';
+import { Transaction } from "../shared/api/models/Transaction";
 
 describe('TransactionItem Component', () => {
   const expenseTransaction: Transaction = {

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
+import { Transaction } from "../api/models/Transaction";
 import {
-  Transaction,
   fetchTransactions,
   getTotalExpense,
   getTotalIncome,

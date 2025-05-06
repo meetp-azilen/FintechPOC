@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { Transaction } from "../../../shared/api/transactionApi";
+import { Transaction } from "../../../shared/api/models/Transaction";
 import {
   borderRadius,
   colors,
