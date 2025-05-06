@@ -1,8 +1,8 @@
-import { FETCH_TRANSACTIONS_FAILED } from "../constants/errors"; // Import error constants
+import { FETCH_TRANSACTIONS_FAILED } from "../../../shared/constants/errors"; // Import error constants
 //
-import { ApiService } from "../api/ApiService"; // Import the new ApiService
-import { Transaction } from "./models/Transaction"; // Import TransactionType enum
-import { TransactionType } from "./models/TransactionType";
+import { ApiService } from "../../../shared/api/ApiService"; // Import the new ApiService
+import { Transaction } from "../../../shared/api/models/Transaction"; // Import TransactionType enum
+import { TransactionType } from "../../../shared/api/models/TransactionType";
 
 // Create an instance of our ApiService
 const apiService = new ApiService();

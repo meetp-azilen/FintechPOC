@@ -3,8 +3,8 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React from "react";
 import HomeScreen from "../modules/dashboard/screens/HomeScreen";
 import ProfileScreen from "../modules/profile/screens/ProfileScreen";
-import ReportsScreen from "../modules/reports/screens/ReportsScreen";
 import SettingsScreen from "../modules/settings/screens/SettingsScreen";
+import TransactionsScreen from "../modules/transactions/screens/TransactionsScreen";
 
 // Import your screens
 
@@ -19,7 +19,7 @@ const BottomTabNavigator = () => {
 
           if (route.name === "Home") {
             iconName = focused ? "home" : "home-outline";
-          } else if (route.name === "Reports") {
+          } else if (route.name === "Transactions") {
             iconName = focused ? "stats-chart" : "stats-chart-outline";
           } else if (route.name === "Settings") {
             iconName = focused ? "settings" : "settings-outline";
@@ -33,11 +33,11 @@ const BottomTabNavigator = () => {
         },
         tabBarActiveTintColor: "tomato",
         tabBarInactiveTintColor: "gray",
-        headerShown: false, 
+        headerShown: false,
       })}
     >
       <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Reports" component={ReportsScreen} />
+      <Tab.Screen name="Transactions" component={TransactionsScreen} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
     </Tab.Navigator>

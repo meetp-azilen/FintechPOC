@@ -1,7 +1,7 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useCallback, useEffect, useState } from "react";
+import { budgetStatus } from "../../modules/dashboard/services/budgetService"; // Removed getBudget, saveBudget
 import { LOAD_BUDGET_FAILED, SET_BUDGET_FAILED } from "../constants/errors";
-import { budgetStatus } from "../utils/budgetService"; // Removed getBudget, saveBudget
 
 interface BudgetState {
   budget: number | null;

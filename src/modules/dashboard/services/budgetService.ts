@@ -1,5 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { SAVE_BUDGET_FAILED } from "../constants/errors";
+import { SAVE_BUDGET_FAILED } from "../../../shared/constants/errors";
 
 const BUDGET_KEY = "fintech_app_budget";
 

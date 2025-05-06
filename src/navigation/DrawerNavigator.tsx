@@ -1,24 +1,23 @@
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import React from "react";
 import BottomTabNavigator from "./BottomTabNavigator";
-import CustomDrawerContent from "./CustomDrawerContent";
 
 // You can import other screens here if you want them ONLY in the drawer
 // import HelpScreen from '../screens/HelpScreen';
 
 const Drawer = createDrawerNavigator();
 
-// Define ParamList matching the one in CustomDrawerContent
-type RootDrawerParamList = {
-  AppTabs: { screen?: string };
-};
-
 const DrawerNavigator = () => {
   return (
-    <Drawer.Navigator initialRouteName="AppTabs" drawerContent={(props) => <CustomDrawerContent {...props} />}>
+    <Drawer.Navigator
+      initialRouteName="Home"
+      screenOptions={{
+        headerLeft: () => null, // Remove the App navigation drawer for now
+      }}
+    >
       {/* The Bottom Tabs are nested inside the Drawer */}
       <Drawer.Screen
-        name="AppTabs"
+        name="Home"
         component={BottomTabNavigator}
         options={{ title: "Finance Tracker" }} // Title is set here, drawerLabel is handled by CustomDrawerContent
       />

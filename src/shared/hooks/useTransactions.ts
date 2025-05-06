@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { Transaction } from "../api/models/Transaction";
 import {
   fetchTransactions,
   getTotalExpense,
   getTotalIncome,
-} from "../api/transactionApi";
+} from "../../modules/dashboard/services/transactionService";
+import { Transaction } from "../api/models/Transaction";
 import { UNKNOWN_ERROR } from "../constants/errors";
 
 interface TransactionsState {
