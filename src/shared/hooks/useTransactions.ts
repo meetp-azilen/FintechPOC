@@ -29,7 +29,11 @@ export const useTransactions = (): TransactionsState => {
       setError(null);
 
       const data = await fetchTransactions();
-      setTransactions(data);
+      setTransactions(
+        data.sort(
+          (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+        )
+      );
 
       setTotalExpenses(getTotalExpense(data));
       setTotalIncome(getTotalIncome(data));

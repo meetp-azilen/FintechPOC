@@ -1,3 +1,4 @@
+import { NavigationContainer } from "@react-navigation/native"; // Import NavigationContainer
 import { render } from "@testing-library/react-native";
 import React from "react";
 import HomeScreen from "../modules/dashboard/screens/HomeScreen";
@@ -43,7 +44,11 @@ describe("HomeScreen", () => {
   });
 
   it("renders correctly with initial state", () => {
-    const { getByText } = render(<HomeScreen />);
+    const { getByText } = render(
+      <NavigationContainer>
+        <HomeScreen />
+      </NavigationContainer>
+    );
 
     expect(getByText("Track your Finance")).toBeTruthy();
     expect(getByText("BudgetInput")).toBeTruthy();

@@ -4,6 +4,7 @@ const strings = {
     // HomeScreen
     homeScreenTitle: "Track your Finance",
     transactionsTitle: "Recent Transactions",
+    allTransactionsTitle: "All Transactions",
     loadingTransactions: "Loading transactions...",
     errorLoadTransactionsPrefix: "Failed to load transactions: ",
     noTransactions: "No transactions found",
@@ -27,6 +28,9 @@ const strings = {
     budgetVisOverBudgetSuffix: " over budget",
     budgetVisPercentageSymbol: "%",
     budgetVisSpentLabel: "Spent",
+
+    //TrasactionList
+    seeAllButton: "See All",
 
     // Component Names (for testing/debugging)
     testBudgetInputComponentName: "BudgetInput",

@@ -1,21 +1,23 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import { useTransactions } from "../../../shared/hooks/useTransactions";
+import strings from "../../../shared/localization/strings"; // Import strings
 import { spacing } from "../../../shared/utils/theme";
 import TransactionList from "../../dashboard/components/TransactionList";
 
 const TransactionsScreen = () => {
   const { transactions, isLoading, error, totalExpenses, refresh } =
-      useTransactions();
-  
+    useTransactions();
+
   return (
     <View style={styles.container}>
-       <TransactionList
-          transactions={transactions}
-          isLoading={isLoading}
-          error={error}
-          onRefresh={refresh}
-        />
+      <TransactionList
+        transactions={transactions}
+        isLoading={isLoading}
+        error={error}
+        onRefresh={refresh}
+        title={strings.allTransactionsTitle}
+      />
     </View>
   );
 };

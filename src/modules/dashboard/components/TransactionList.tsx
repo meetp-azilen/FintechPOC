@@ -5,6 +5,7 @@ import {
   RefreshControl,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from "react-native";
 import { Transaction } from "../../../shared/api/models/Transaction";
@@ -17,6 +18,9 @@ interface TransactionListProps {
   isLoading: boolean;
   error: Error | null;
   onRefresh: () => void;
+  title?: string;
+  showSeeAllButton?: boolean;
+  onSeeAllPress?: () => void; // New prop for handling the press
 }
 
 const TransactionList: React.FC<TransactionListProps> = ({
@@ -24,6 +28,9 @@ const TransactionList: React.FC<TransactionListProps> = ({
   isLoading,
   error,
   onRefresh,
+  title,
+  showSeeAllButton,
+  onSeeAllPress,
 }) => {
   if (isLoading && transactions.length === 0) {
     return (
@@ -48,7 +55,14 @@ const TransactionList: React.FC<TransactionListProps> = ({
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{strings.transactionsTitle}</Text>
+      <View style={styles.headerContainer}>
+        <Text style={styles.title}>{title || strings.transactionsTitle}</Text>
+        {showSeeAllButton && onSeeAllPress && (
+          <TouchableOpacity onPress={onSeeAllPress}>
+            <Text style={styles.seeAllButton}>{strings.seeAllButton}</Text>
+          </TouchableOpacity>
+        )}
+      </View>
 
       {transactions.length === 0 ? (
         <View style={styles.emptyContainer}>
@@ -56,9 +70,7 @@ const TransactionList: React.FC<TransactionListProps> = ({
         </View>
       ) : (
         <FlatList
-          data={transactions.sort(
-            (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-          )}
+          data={transactions}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => <TransactionItem transaction={item} />}
           refreshControl={
@@ -86,11 +98,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: spacing.large,
   },
+  headerContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: spacing.small,
+  },
   title: {
     fontSize: fontSizes.x_large,
     fontWeight: "700",
     color: colors.text,
-    marginBottom: spacing.medium,
   },
   loadingText: {
     marginTop: spacing.medium,
@@ -119,6 +136,11 @@ const styles = StyleSheet.create({
   },
   listContent: {
     paddingBottom: spacing.large,
+  },
+  seeAllButton: {
+    fontSize: fontSizes.medium,
+    color: colors.primary, // Or your preferred link color
+    fontWeight: "600",
   },
 });
 

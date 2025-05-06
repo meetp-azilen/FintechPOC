@@ -13,6 +13,7 @@ const DrawerNavigator = () => {
       initialRouteName="Home"
       screenOptions={{
         headerLeft: () => null, // Remove the App navigation drawer for now
+        swipeEnabled: false, // Disable swipe to open the drawer
       }}
     >
       {/* The Bottom Tabs are nested inside the Drawer */}

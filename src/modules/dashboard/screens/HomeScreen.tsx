@@ -1,6 +1,8 @@
+import { useNavigation } from "@react-navigation/native"; // Import useNavigation
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { SafeAreaView, ScrollView, StyleSheet, Text, View } from "react-native";
+import { HomeBottomTabNavigationProp } from "../../../navigation/types"; // Import the specific type
 import { useBudget } from "../../../shared/hooks/useBudget";
 import { useTransactions } from "../../../shared/hooks/useTransactions";
 import strings from "../../../shared/localization/strings";
@@ -10,12 +12,17 @@ import BudgetVisualization from "../components/BudgetVisualization";
 import TransactionList from "../components/TransactionList";
 
 const HomeScreen: React.FC = () => {
+  const navigation = useNavigation<HomeBottomTabNavigationProp>();
   const { transactions, isLoading, error, totalExpenses, refresh } =
     useTransactions();
 
   const { budget, setBudgetAmount, getBudgetStatus } = useBudget();
 
   const budgetStatus = getBudgetStatus(totalExpenses);
+
+  const handleSeeAllTransactions = () => {
+    navigation.navigate("Transactions");
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -38,10 +45,13 @@ const HomeScreen: React.FC = () => {
         />
 
         <TransactionList
-          transactions={transactions}
+          transactions={transactions.slice(0, 3)}
           isLoading={isLoading}
           error={error}
           onRefresh={refresh}
+          title={strings.transactionsTitle}
+          showSeeAllButton={true}
+          onSeeAllPress={handleSeeAllTransactions} // Pass the handler
         />
       </ScrollView>
     </SafeAreaView>
