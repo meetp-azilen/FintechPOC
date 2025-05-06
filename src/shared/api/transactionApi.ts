@@ -1,7 +1,8 @@
 import { FETCH_TRANSACTIONS_FAILED } from "../constants/errors"; // Import error constants
 //
 import { ApiService } from "../api/ApiService"; // Import the new ApiService
-import { Transaction } from "./models/Transaction";
+import { Transaction } from "./models/Transaction"; // Import TransactionType enum
+import { TransactionType } from "./models/TransactionType";
 
 // Create an instance of our ApiService
 const apiService = new ApiService();
@@ -25,12 +26,12 @@ export const fetchTransactions = async (): Promise<Transaction[]> => {
 
 export const getTotalExpense = (transactions: Transaction[]): number => {
   return transactions
-    .filter((transaction) => transaction.type === "expense")
+    .filter((transaction) => transaction.type === TransactionType.Expense)
     .reduce((total, transaction) => total + transaction.amount, 0);
 };
 
 export const getTotalIncome = (transactions: Transaction[]): number => {
   return transactions
-    .filter((transaction) => transaction.type === "income")
+    .filter((transaction) => transaction.type === TransactionType.Income)
     .reduce((total, transaction) => total + transaction.amount, 0);
 };

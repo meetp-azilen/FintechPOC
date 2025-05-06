@@ -48,7 +48,7 @@ cd FintechPOC
     *   Expo CLI: `npm install -g expo-cli`
 
 **Install Dependencies for Mobile App:**
-Navigate to the client directory (if your React Native app is in a subdirectory like `client/` or `mobile/` - adjust if it's in the root). If your React Native app is in the project root, you can skip the `cd client` step.
+Navigate to the client directory (if your React Native app is in a subdirectory like `src/` or `mobile/` - adjust if it's in the root). If your React Native app is in the project root, you can skip the `cd src` step.
 
 Assuming your client app is in the root of `FintechPOC` as per the original README:
     ```bash
@@ -87,7 +87,7 @@ The API endpoint for transactions will be available at `http://localhost:5000/ap
 
 ### 2. Start the Mobile App (React Native Client)
 
-Ensure you are in the project root directory (`/Users/meet.parabiya/Fintech_POC/FintechPOC/`) or your client app's root directory.
+Ensure you are in the project root directory (`/FintechPOC/`) or your client app's root directory.
 ```bash
 npx expo start
 # or

@@ -22,6 +22,7 @@ const BudgetVisualization: React.FC<BudgetVisualizationProps> = ({
   budget,
   budgetStatus,
 }) => {
+  // Check if budget status is "none" then show a message to set a budget
   if (budgetStatus === "none") {
     return (
       <View style={styles.container}>
@@ -76,12 +77,9 @@ const BudgetVisualization: React.FC<BudgetVisualizationProps> = ({
         >
           {(fill: number) => (
             <View style={styles.circularProgressContent}>
-              <Text
-                style={styles.progressPercentText}
-                adjustsFontSizeToFit // Keep this prop if needed
-              >{`${Math.round(fill)}${
-                strings.budgetVisPercentageSymbol
-              }`}</Text>
+              <Text style={styles.progressPercentText} adjustsFontSizeToFit>
+                {`${Math.round(fill)}${strings.budgetVisPercentageSymbol}`}
+              </Text>
               <Text style={styles.progressSpentText}>
                 {strings.budgetVisSpentLabel}
               </Text>

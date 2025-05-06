@@ -76,7 +76,10 @@ const BudgetInput: React.FC<BudgetInputProps> = ({ budget, setBudget }) => {
       <Text style={styles.title}>
         {isEditing ? strings.budgetInputSetTitle : strings.budgetInputViewTitle}
       </Text>
-
+      {
+        // Display the budget input field or the current budget amount based on
+        //the editing state
+      }
       {isEditing ? (
         <>
           <View style={styles.inputContainer}>

@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { Transaction } from "../../../shared/api/models/Transaction";
+import { TransactionType } from "../../../shared/api/models/TransactionType";
 import {
   borderRadius,
   colors,
@@ -16,7 +17,7 @@ interface TransactionItemProps {
 const TransactionItem: React.FC<TransactionItemProps> = ({ transaction }) => {
   const { date, amount, type, category, description } = transaction;
 
-  const isExpense = type === "expense";
+  const isExpense = type === TransactionType.Expense;
   const amountColor = isExpense ? colors.expense : colors.income;
   const amountPrefix = isExpense ? "-" : "+";
 
