@@ -13,12 +13,14 @@ This application allows users to:
 
 ```
 /
-├── src/         # Frontend React Native application code
-│   └── assets/
-│   └── modules/
-│   └── navigation/
-│   └── shared/
-│   └── __tests__/
+├── android/        # Native Android application code
+├── ios/            # Native iOS application code
+├── src/            # React Native application code
+│   └── assets/     # Assets like images and fonts
+│   └── modules/    # React Native modules
+│   └── navigation/ # Navigation code for the app
+│   └── shared/     # Shared components and styles
+│   └── __tests__/  # Unit Test cases
 ├── server/         # Backend Node.js API server
 │   └── app.js      # Main server file
 │   └── package.json
