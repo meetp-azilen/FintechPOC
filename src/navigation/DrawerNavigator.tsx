@@ -22,8 +22,6 @@ const DrawerNavigator = () => {
         component={BottomTabNavigator}
         options={{ title: "Finance Tracker" }} // Title is set here, drawerLabel is handled by CustomDrawerContent
       />
-      {/* Add other screens specific to the Drawer here if needed */}
-      {/* <Drawer.Screen name="Help" component={HelpScreen} /> */}
     </Drawer.Navigator>
   );
 };
